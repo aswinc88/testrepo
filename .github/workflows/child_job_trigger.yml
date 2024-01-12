@@ -1,19 +1,16 @@
-name: Child Workflow
+name: Triggered Workflow
 
 on:
-  push:
-    branches:
-      - main
+  repository_dispatch:
+    types:
+      - trigger-workflow
 
 jobs:
-  trigger_job:
+  build:
     runs-on: ubuntu-latest
-    
-    steps:
 
-      - name: Echo Child workflow
-        shell: bash
-        run: |
-            echo "THis is Child repo workflow"
-            sleep 120s
-        
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Add other steps as needed for your workflow
