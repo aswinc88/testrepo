@@ -1,0 +1,19 @@
+name: Child Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger_job:
+    runs-on: ubuntu-latest
+    
+    steps:
+
+      - name: Echo Child workflow
+        shell: bash
+        run: |
+            echo "THis is Child repo workflow"
+            sleep 120s
+        
